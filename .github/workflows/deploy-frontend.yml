@@ -22,6 +22,7 @@ jobs:
         run: |
           cd ./
           npm install
+          npm run lint
           npm run build
 
       - name: 将 Vue 代码上传到 EC2
