@@ -208,7 +208,6 @@
               //await this.$router.push(this.handleRoute())
               await this.$router.push('/')
             } finally {
-              console.info('login')
               this.loading = false
             }
         })
