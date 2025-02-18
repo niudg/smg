@@ -20,7 +20,7 @@ jobs:
 
       - name: 安装依赖并构建
         run: |
-          cd ./
+          cd SMG
           npm install
           npm run build
 
@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "./dist/*"
+          source: "SMG/dist/*"
           target: "${{ secrets.FRONTEND_DEPLOY_PATH }}"
 
       - name: 重启 Nginx
