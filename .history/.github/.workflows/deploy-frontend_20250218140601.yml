@@ -1,0 +1,43 @@
+name: Deploy Vue Frontend to EC2
+
+on:
+  push:
+    branches:
+      - main  # 当推送到 main 分支时触发部署
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 安装依赖并构建
+        run: |
+          cd SMG
+          npm install
+          npm run build
+
+      - name: 将 Vue 代码上传到 EC2
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "SMG/dist/*"
+          target: "${{ secrets.FRONTEND_DEPLOY_PATH }}"
+
+      - name: 重启 Nginx
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo systemctl restart nginx
