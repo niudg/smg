@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - sudo yum makecache
+      - sudo yum -y install nasm.x86_64
+      - cd core-pro
+      - npm i
+      - npm install image-webpack-loader --save-dev
+      - npm install imagemin-mozjpeg --save-dev
+      # - echo nothing to do
+  pre_build:
+    commands:
+      - pwd
+      # - echo nothing to do
+  build:
+    commands:
+      - npm run build
+      # - echo nothing to do
+  post_build:
+    commands:
+      - echo nothing to do
+artifacts:
+  files:
+    - '**/*'
+  # base-directory: dist
+  base-directory: core-pro/src
