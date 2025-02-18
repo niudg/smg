@@ -1,0 +1,28 @@
+onf.el-table__body tr.hover-row.el-table__row--striped > td,
+.el-table__body tr.hover-row > td,
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: none !important;
+}
+
+.el-table__body tr.current-row > td.el-table__cell,
+.el-table--striped
+  .el-table__body
+  tr.el-table__row--striped.current-row
+  td.el-table__cell,
+.el-table__body tr.hover-row.el-table__row--striped.current-row > td {
+  background-color: #ecf5ff !important;
+  &.cell-white {
+    background-color: #fff !important;
+  }
+}
+.el-table__body tr.success-row > td.el-table__cell,
+.el-table--striped
+  .el-table__body
+  tr.el-table__row--striped.success-row
+  td.el-table__cell,
+.el-table__body tr.hover-row.el-table__row--striped.success-row > td {
+  background-color: #ecf5ff !important;
+  &.cell-white {
+    background-color: #ecf5ff !important;
+  }
+}

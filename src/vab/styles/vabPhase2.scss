@@ -1,0 +1,31 @@
+.create-container {
+  padding: 0 !important;
+  margin-right: 90px;
+  background: $base-color-background !important;
+
+  .el-form-item {
+    .el-form-item__label {
+      .el-button {
+        width: 100%;
+      }
+    }
+
+    .line {
+      text-align: center;
+    }
+  }
+
+  .chks-flex {
+    display: flex;
+  }
+}
+
+::v-deep .is-error .el-form-item__error {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+::v-deep .el-input__inner {
+  padding-right: 5px !important;
+}

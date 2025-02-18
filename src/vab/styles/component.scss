@@ -1,0 +1,33 @@
+.el-form-item__label {
+  .el-button {
+    width: 100%;
+  }
+}
+.multiple {
+  text-align: center;
+  ::v-deep {
+    .el-input__inner {
+      text-align: center !important;
+    }
+  }
+}
+// .is-required {
+// ::v-deep {
+//   .el-form-item__label:before {
+//     float: right;
+//     margin-left: 5px;
+//   }
+// }
+// }
+.is-error {
+  .el-form-item__error {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    font-size: 12px !important;
+  }
+  .error_box {
+    position: absolute !important;
+  }
+}
