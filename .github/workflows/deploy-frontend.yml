@@ -13,7 +13,6 @@ jobs:
 
       - name: 安装依赖
         run: |
-          nvm use v16.17.1
           npm install
 
       - name: 编译项目
