@@ -13,6 +13,7 @@
     "add-dom-event-listener": "^1.1.0",
     "admin-pro": "file:",
     "axios": "^0.24.0",
+    "caniuse-lite": "^1.0.30001692",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "classnames": "^2.3.2",
