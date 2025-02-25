@@ -35,7 +35,7 @@ jobs:
       - name: 创建nginx-app配置文件
         run: |
           ssh -i /Users/nhg007/Documents/aws/service-main.pem ubuntu@35.78.113.213 << 'EOF'
-          cat << | sudo tee /etc/nginx/sites-available/vue-app
+          cat <<EOL | sudo tee /etc/nginx/sites-available/vue-app
           server {
               root /home/ubuntu/vue-app;
               index index.html;
