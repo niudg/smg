@@ -11,11 +11,14 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
-      - name: 使用已有的 node_modules
+
+      - name: 使用已有的 node_modules编译
         run: |
           ln -s /Users/nhg007/Documents/develop/smg/node_modules ./node_modules
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm use v16.17.1
-          nvm use v16.17.1
           npm run build
+      - name: 直接上传 `dist/` 到服务器
+        run: |
+          scp -i /Users/nhg007/Documents/aws/service-main.pem -r dist/* ubuntu@54.178.29.137:/home/ubuntu/vue-app
