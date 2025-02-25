@@ -13,7 +13,6 @@ jobs:
 
       - name: 安装依赖
         run: |
-          npm -v
           npm install
 
       - name: 编译项目
