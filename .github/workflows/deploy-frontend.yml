@@ -22,4 +22,5 @@ jobs:
       - name: 使用已有的 node_modules
         run: |
           ln -s /Users/nhg007/Documents/develop/smg/node_modules ./node_modules
+          nvm use v16.17.1
           npm run build
