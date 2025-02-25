@@ -11,16 +11,11 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
-
-      - name: 加载 NVM
-        run: |
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm use v16.17.1
-          node -v
-          npm -v
       - name: 使用已有的 node_modules
         run: |
           ln -s /Users/nhg007/Documents/develop/smg/node_modules ./node_modules
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm use v16.17.1
           nvm use v16.17.1
           npm run build
