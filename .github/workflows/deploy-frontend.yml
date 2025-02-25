@@ -6,15 +6,19 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # 这里指定使用 EC2 作为 runner
+    runs-on: self-hosted  # 运行在 EC2
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: 安装依赖
+      - name: 加载 NVM
         run: |
-          npm install
-
-      - name: 编译项目
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm use v16.17.1
+          node -v
+          npm -v
+      - name: 使用已有的 node_modules
         run: |
+          ln -s /Users/nhg007/Documents/develop/smg/node_modules ./node_modules
           npm run build
