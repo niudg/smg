@@ -21,4 +21,4 @@ jobs:
           npm run build
       - name: 直接上传 `dist/` 到服务器
         run: |
-          scp -i /Users/nhg007/Documents/aws/service-main.pem -r dist/* ubuntu@54.178.29.137:/home/ubuntu/vue-app
+          scp -i /Users/nhg007/Documents/aws/service-main.pem -r dist/* ubuntu@35.78.113.213:/home/ubuntu/vue-app
