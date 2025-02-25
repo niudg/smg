@@ -1,43 +1,21 @@
-name: Deploy Vue Frontend to EC2
-
+name: Build on EC2
 on:
   push:
     branches:
-      - main  # 当推送到 main 分支时触发部署
+      - main
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: self-hosted  # 这里指定使用 EC2 作为 runner
     steps:
-      - name: 拉取代码
+      - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: 设置 Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16.17.1
-
-      - name: 安装依赖并构建
+      - name: 安装依赖
         run: |
-          cd ./
-          npm ci
-          npm run build
+          nvm use v16.17.1
+          npm install
 
-      - name: 将 Vue 代码上传到 EC2
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "./dist/*"
-          target: "${{ secrets.FRONTEND_DEPLOY_PATH }}"
-
-      - name: 重启 Nginx
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            sudo systemctl restart nginx
+      - name: 编译项目
+        run: |
+          npm build
